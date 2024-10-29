@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties & Residents</title>
+</head>
+<body>
+    <h1>Properties & Residents</h1>
+
+    {{range .Properties}}
+        <h2>Property ID: {{.PropertyId}}</h2>
+        <p><strong>Address:</strong> {{.PropertyAddressName}}</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Resident ID</th>
+                    <th>First Name</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Residents}}
+                    <tr>
+                        <td>{{.ResidentId}}</td>
+                        <td>{{.ResidentFirstName}}</td>
+                        <td>{{.ResidentType}}</td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="3">No residents found for this property.</td>
+                    </tr>
+                {{end}}
+            </tbody>
+        </table>
+    {{end}}
+</body>
+</html>
